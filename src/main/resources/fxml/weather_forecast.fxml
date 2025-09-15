@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="580.0" prefWidth="540.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cz.cuni.milanenm.controllers.ControllerForecast">
+
+    <children>
+        <!-- Background: fill window exactly (no white bars) -->
+        <ImageView fitHeight="580.0" fitWidth="540.0" layoutX="0.0" layoutY="0.0"
+                   pickOnBounds="true" preserveRatio="false">
+            <image><Image url="@../img/forecast.jpg"/></image>
+        </ImageView>
+
+        <!-- Header / controls -->
+        <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="100.0" prefWidth="524.0">
+            <children>
+                <Text fill="#111111" layoutX="5.0" layoutY="70.0"
+                      text="Which city are you looking for?" textAlignment="CENTER" wrappingWidth="510.0">
+                    <font><Font name="Times New Roman Bold" size="20.0"/></font>
+                </Text>
+
+                <Button fx:id="toReturn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                        prefHeight="30.0" prefWidth="90.0" text="&lt;&lt; Return" textFill="#234ee8">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+
+                <Button fx:id="help" layoutX="424.0" layoutY="10.0" mnemonicParsing="false"
+                        prefHeight="30.0" prefWidth="90.0" text="Help" textFill="#234ee8">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <!-- Input row -->
+        <AnchorPane layoutX="8.0" layoutY="112.0" prefHeight="44.0" prefWidth="524.0">
+            <children>
+                <TextField fx:id="cityName" alignment="CENTER"
+                           layoutX="0.0" layoutY="4.0"
+                           prefHeight="36.0" prefWidth="280.0"
+                           promptText="Enter a city name"
+                           style="-fx-background-color: white; -fx-border-color: #234ee8; -fx-text-fill: #000000;">
+                    <font><Font name="Times New Roman Bold" size="18.0"/></font>
+                </TextField>
+
+                <Button fx:id="getWeather" layoutX="290.0" layoutY="6.0" mnemonicParsing="false"
+                        prefHeight="30.0" prefWidth="110.0" text="Get Weather" textFill="#234ee8">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+
+                <Button fx:id="clear" layoutX="408.0" layoutY="6.0" mnemonicParsing="false"
+                        prefHeight="30.0" prefWidth="110.0" text="Delete" textFill="#234ee8">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <!-- Error line (fades) -->
+        <Text fx:id="exceptionField" fill="#d31414" layoutX="12.0" layoutY="168.0"
+              textAlignment="CENTER" wrappingWidth="516.0">
+            <font><Font name="Times New Roman Bold" size="14.0"/></font>
+        </Text>
+
+        <!-- Chart (compact; legend inside on the right) -->
+        <AnchorPane layoutX="12.0" layoutY="170.0" prefHeight="220.0" prefWidth="516.0">
+            <children>
+                <LineChart fx:id="forecastChart" layoutX="0.0" layoutY="0.0"
+                           prefHeight="220.0" prefWidth="516.0"
+                           legendVisible="true" legendSide="RIGHT" createSymbols="true">
+                    <xAxis>
+                        <CategoryAxis fx:id="xAxis"
+                                      style="-fx-tick-label-fill: white; -fx-label-fill: white;"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxis" label="°C"
+                                    style="-fx-tick-label-fill: white; -fx-label-fill: white;"/>
+                    </yAxis>
+                </LineChart>
+            </children>
+        </AnchorPane>
+
+        <!-- Spinner near chart corner -->
+        <ProgressIndicator fx:id="spinner" layoutX="500.0" layoutY="174.0"
+                           maxHeight="24.0" maxWidth="24.0" visible="false"/>
+
+        <!-- Plain forecast text -->
+        <Text fx:id="forecast" fill="#ffffffff"
+              layoutX="12.0" layoutY="425.0" wrappingWidth="516.0">
+            <font><Font name="Times New Roman Bold" size="14.0"/></font>
+        </Text>
+    </children>
+</AnchorPane>

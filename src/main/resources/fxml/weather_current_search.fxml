@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="450.0" prefWidth="392.0"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cz.cuni.milanenm.controllers.ControllerCurrentSearch"
+            style="-fx-background-image: url('/img/current.png');
+                   -fx-background-repeat: stretch;
+                   -fx-background-size: 100% 100%;
+                   -fx-background-position: center center;">
+
+    <children>
+        <!-- Header -->
+        <AnchorPane layoutX="-3.0" layoutY="4.0" prefHeight="108.0" prefWidth="399.0">
+            <children>
+                <Text fill="#fcf5f5" layoutX="38.0" layoutY="91.0"
+                      text="Which city are you looking for?" textAlignment="CENTER" wrappingWidth="325.14">
+                    <font><Font name="Times New Roman Bold" size="22.0"/></font>
+                </Text>
+                <Button fx:id="toReturn" layoutX="15.0" layoutY="14.0"
+                        mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0"
+                        text="&lt;&lt; Return" textFill="#433065">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+                <Button fx:id="help" layoutX="300.0" layoutY="14.0"
+                        mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0"
+                        text="Help" textFill="#433065">
+                    <font><Font name="Times New Roman Bold" size="13.0"/></font>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <!-- Input row -->
+        <TextField fx:id="cityName" alignment="CENTER"
+                   layoutX="14.0" layoutY="142.0"
+                   prefHeight="36.0" prefWidth="252.0"
+                   promptText="Enter a city name"
+                   style="-fx-background-color: white; -fx-border-color: #483D8B; -fx-text-fill: #433065;">
+            <font><Font name="Times New Roman Bold" size="18.0"/></font>
+        </TextField>
+
+        <!-- Errors -->
+        <Text fx:id="exceptionField" fill="#d31414" layoutX="25.0" layoutY="117.0"
+              textAlignment="CENTER" wrappingWidth="337.14"/>
+
+        <!-- Actions -->
+        <Button fx:id="getWeather" layoutX="280.0" layoutY="129.0"
+                mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
+                text="Get Weather" textFill="#433065">
+            <font><Font name="Times New Roman Bold" size="13.0"/></font>
+        </Button>
+        <Button fx:id="clear" layoutX="280.0" layoutY="165.0"
+                mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
+                text="Delete" textFill="#433065">
+            <font><Font name="Times New Roman Bold" size="13.0"/></font>
+        </Button>
+
+        <!-- History column -->
+        <Label layoutX="280.0" layoutY="210.0" text="Recent searches" textFill="#ffffff">
+            <font><Font name="Times New Roman Bold" size="14.0"/></font>
+        </Label>
+        <ListView fx:id="historyList" layoutX="280.0" layoutY="230.0"
+                  prefHeight="160.0" prefWidth="100.0"/>
+        <Button fx:id="clearHistory" layoutX="280.0" layoutY="395.0"
+                mnemonicParsing="false" prefHeight="24.0" prefWidth="100.0"
+                text="Clear history" textFill="#433065">
+            <font><Font name="Times New Roman Bold" size="12.0"/></font>
+        </Button>
+
+        <!-- Weather output (fixed width = 248) + spinner -->
+        <VBox layoutX="16.0" layoutY="210.0" prefHeight="236.0" prefWidth="248.0" spacing="8.0">
+            <children>
+                <Text fx:id="weatherInfo" fill="#fffbfb" wrappingWidth="248.0">
+                    <font><Font name="Times New Roman Bold" size="18.0"/></font>
+                </Text>
+                <ProgressIndicator fx:id="spinner" maxHeight="24.0" maxWidth="24.0" visible="false"/>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
